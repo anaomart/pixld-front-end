@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://13.50.240.236/'
+const URL = 'https://share-me-n2qk.onrender.com/'
 const user = JSON.parse(localStorage.getItem('user'));
 
 export const userRequest = axios.create({
