@@ -9,8 +9,8 @@ import { userRequest } from '../util/Request';
 
 const randomImage = "https://source.unsplash.com/1600x900/?technology,phtograpy,nature"
 export default function UserProfile() {
-  // const [user, setUser] = useState();
-  const { user, pins , saved ,createdPins  ,setSaved ,setCreatedPins} = useContext(UserContext)
+  const { user, pins , saved ,createdPins ,setSaved ,setCreatedPins} = useContext(UserContext)
+  const [savedPins, setSavedPins] = useState([]);
   const [text, setText] = useState('Created');
   const [activeBtn, setactiveBtn] = useState('created');
   const navigate = useNavigate();
@@ -18,10 +18,8 @@ export default function UserProfile() {
 
   const activeBtnStyle = 'bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none'
   const notActiveBtnStyle = 'bg-primary text-black mr-4 font-bold p-2 rounded-full w-20 outline-none'
-  useEffect(()=>{
-    setactiveBtn('saved');
-    async function getPins() {
-      const getSavedPins = await userRequest.get('/pin/save')
+  async function   getPins() {
+    const getSavedPins = await userRequest.get('/pin/save')
       const savedPins = getSavedPins.data.savedPins.map(pin=> {
         const {_id} = pin
          return _id
@@ -32,13 +30,14 @@ export default function UserProfile() {
       }) 
       setSaved(savedPins)
       setCreatedPins(createdPins)
-    }
-    getPins()
+  }
+  useEffect(()=> {
+    getPins();
+  
   },[setCreatedPins, setSaved])
   if (!user) {
     return <Spinner message="Loading Profile" />
   }
-
 
 
   return (
@@ -78,6 +77,8 @@ export default function UserProfile() {
                       onClick={(e)=> {
                         setText(e.target.textContext)
                           setactiveBtn('created')
+                          setCreatedPins([])
+                          getPins();
 
                         }}
                         className={`${activeBtn === 'created' ? activeBtnStyle : notActiveBtnStyle}`}
@@ -89,7 +90,8 @@ export default function UserProfile() {
                       onClick={(e)=> {
                         setText(e.target.textContext)
                           setactiveBtn('saved')
-
+                          setSaved([])
+                          getPins();
                         }}
                         className={`${activeBtn === 'saved' ? activeBtnStyle : notActiveBtnStyle}`}
                       >
