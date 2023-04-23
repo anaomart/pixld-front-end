@@ -10,8 +10,7 @@ import { userRequest } from '../util/Request';
 const randomImage = "https://source.unsplash.com/1600x900/?technology,phtograpy,nature"
 export default function UserProfile() {
   // const [user, setUser] = useState();
-  const { user, pins , saved ,createdPins } = useContext(UserContext)
-  const [savedPins, setSavedPins] = useState([]);
+  const { user, pins , saved ,createdPins  ,setSaved ,setCreatedPins} = useContext(UserContext)
   const [text, setText] = useState('Created');
   const [activeBtn, setactiveBtn] = useState('created');
   const navigate = useNavigate();
@@ -21,7 +20,21 @@ export default function UserProfile() {
   const notActiveBtnStyle = 'bg-primary text-black mr-4 font-bold p-2 rounded-full w-20 outline-none'
   useEffect(()=>{
     setactiveBtn('saved');
-  },[])
+    async function getPins() {
+      const getSavedPins = await userRequest.get('/pin/save')
+      const savedPins = getSavedPins.data.savedPins.map(pin=> {
+        const {_id} = pin
+         return _id
+      })
+      const createdPins = getSavedPins.data.createdPins.map(pin=> {
+        const {_id} = pin
+         return _id
+      }) 
+      setSaved(savedPins)
+      setCreatedPins(createdPins)
+    }
+    getPins()
+  },[setCreatedPins, setSaved])
   if (!user) {
     return <Spinner message="Loading Profile" />
   }
