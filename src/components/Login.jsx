@@ -11,13 +11,14 @@ export default function Login() {
     const navigate= useNavigate()
     const {user , setUser } = useContext(UserContext)
 
-    const URL = 'http://13.50.240.236/'
+    const URL = 'https://share-me-docker1.onrender.com'
     const onSuccessLogin = async (response) => {
         const JWT = response.credential
         localStorage.setItem('user',JSON.stringify(JWT));
         setUser(JWT)
-        await sendJWTToServer(JWT)
         window.location.reload();
+        await sendJWTToServer(JWT)
+        navigate('/')
     }
         async  function  sendJWTToServer(JWT){
             const response = await fetch(URL+'/user/login',{

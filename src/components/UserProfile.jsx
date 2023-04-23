@@ -19,7 +19,9 @@ export default function UserProfile() {
 
   const activeBtnStyle = 'bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none'
   const notActiveBtnStyle = 'bg-primary text-black mr-4 font-bold p-2 rounded-full w-20 outline-none'
-
+  useEffect(()=>{
+    setactiveBtn('saved');
+  },[])
   if (!user) {
     return <Spinner message="Loading Profile" />
   }
