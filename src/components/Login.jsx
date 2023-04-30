@@ -11,7 +11,7 @@ export default function Login() {
     const navigate= useNavigate()
     const {user , setUser } = useContext(UserContext)
 
-    const URL = 'https://share-me-n2qk.onrender.com'
+    const URL = 'http://localhost:3000'
     const onSuccessLogin = async (response) => {
         const JWT = response.credential
         localStorage.setItem('user',JSON.stringify(JWT));

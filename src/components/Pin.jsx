@@ -59,7 +59,7 @@ export default function Pin({ pin :x}) {
                             <div className="flex items-center justify-between">
                                 <div className='flex gap-2'>
                                     <a
-                                        href={`${pin?.image}?dl=`}
+                                        href={`/${pin?.image}?dl=`}
                                         download
                                         onClick={(e) => e.stopPropagation()}
                                     >
