@@ -11,7 +11,7 @@ export default function Login() {
     const navigate= useNavigate()
     const {user , setUser } = useContext(UserContext)
 
-    const URL = 'http://localhost:4000'
+    const URL = 'https://13.53.234.187'
     const onSuccessLogin = async (response) => {
         const JWT = response.credential
         localStorage.setItem('user',JSON.stringify(JWT));
