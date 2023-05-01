@@ -8,40 +8,41 @@ import { UserContext } from '../context/UserContext';
 
 
 export default function Login() {
-    const navigate= useNavigate()
-    const {user , setUser } = useContext(UserContext)
+    const navigate = useNavigate()
+    const { user, setUser } = useContext(UserContext)
 
     const URL = 'https://13.53.234.187'
     const onSuccessLogin = async (response) => {
         const JWT = response.credential
-        localStorage.setItem('user',JSON.stringify(JWT));
+        localStorage.setItem('user', JSON.stringify(JWT));
         setUser(JWT)
         window.location.reload();
         await sendJWTToServer(JWT)
         navigate('/')
     }
 
-        async  function  sendJWTToServer(JWT){
-            const response = await fetch(URL+'/user/login',{
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                  },
-                body:JSON.stringify({JWT})
-            })
-        }
-    
+    async function sendJWTToServer(JWT) {
+        const response = await fetch(URL + '/user/login', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ JWT })
+        })
+    }
+
     return (
         <div className='flex justify-start items-center flex-col h-screen ' >
             <div className='relative w-full h-full'>
                 <video className='w-full h-full object-cover'
-                    src={shareVideo}
                     loop
                     controls={false}
                     muted
                     autoPlay
                 >
+                    <source src={shareVideo} type="video/mp4"
+                    ></source>
                 </video>
                 <div className='absolute flex flex-col justify-center items-center inset-0 bg-blackOverlay'>
                     <div className='p-5'>
@@ -51,9 +52,9 @@ export default function Login() {
 
 
                         <GoogleLogin
-                            onSuccess={(response)=> {onSuccessLogin(response)}}
+                            onSuccess={(response) => { onSuccessLogin(response) }}
                             onError={() => {
-                                console.log({Error:'Login Failed'});
+                                console.log({ Error: 'Login Failed' });
                             }}
                             useOneTap
                         />
