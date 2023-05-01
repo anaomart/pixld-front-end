@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import shareVideo from '../assets/share.mp4'
-import logo from '../assets/logowhite.png'
+import logo from '../assets/logo.png'
 import { GoogleLogin } from '@react-oauth/google';
 import { useState } from 'react';
 import { UserContext } from '../context/UserContext';
@@ -11,7 +11,7 @@ export default function Login() {
     const navigate= useNavigate()
     const {user , setUser } = useContext(UserContext)
 
-    const URL = 'http://localhost:3000'
+    const URL = 'http://localhost:4000'
     const onSuccessLogin = async (response) => {
         const JWT = response.credential
         localStorage.setItem('user',JSON.stringify(JWT));

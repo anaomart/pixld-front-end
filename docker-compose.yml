@@ -1,9 +1,14 @@
 version: '3'
 services:
-    node-api:
-      container_name: react-app
+    react:
+      container_name: reactApp
       build: . 
       ports:
         - "3001:3001"
+        - "3000:3000"
       env_file:
-       - ./.env
+        - ./.env
+
+      stdin_open: true
+      tty: true 
+
