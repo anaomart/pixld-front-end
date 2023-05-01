@@ -20,7 +20,7 @@ export default function Login() {
         await sendJWTToServer(JWT)
         navigate('/')
     }
-    
+
         async  function  sendJWTToServer(JWT){
             const response = await fetch(URL+'/user/login',{
                 method: 'POST',
