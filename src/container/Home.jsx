@@ -8,17 +8,28 @@ import Sidebar from '../components/Sidebar'
 import UserProfile from '../components/UserProfile'
 import { UserContext } from '../context/UserContext'
 import { userRequest } from '../util/Request'
-
+import Modal from '../components/Model'
+import ReactDOM  from 'react-dom'
 export default function Home() {
+  const [error , setError] = useState(false)
   const [toggleSidebar, setToggleSidebar] = useState(true)
   const {user, setUser} = useContext(UserContext)
   const scrollRef = useRef(null);
   useEffect(() => {
     async function getUserInfo() {
+      try {
+        console.log('test user info')
+        // setError(true)
       const response = await userRequest.get('/user/userInfo')
-      setUser(response.data.user[0])
+            setUser(response.data.user[0])
+    }catch(err){
+      setError(true)
     }
-    getUserInfo();
+    }
+    
+      getUserInfo();
+      
+    
   }, [])
 
   useEffect(() => {
@@ -27,7 +38,7 @@ export default function Home() {
 
   return (
     <div className='flex bg-gray-50 md:flex-row flex-col h-screen transition duration-75 ease-out '>
-      
+      {error && <Modal/>}
       <div className='hidden md:flex h-screen flex-initial'>
       <Sidebar user={user && user} closeToggle={setToggleSidebar} />
       </div>
