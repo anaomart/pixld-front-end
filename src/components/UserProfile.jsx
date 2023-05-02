@@ -62,6 +62,7 @@ export default function UserProfile() {
                   onClick={()=>
                     {localStorage.removeItem('user');
                     window.location.reload();
+                    navigate('/');
                   }
                   }
                 >
