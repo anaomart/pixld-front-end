@@ -48,7 +48,7 @@ export default function Home() {
           <Link to='/'>
             <img src={logo} className='ml-24 w-24 -translate-x-14' alt='logo' />
           </Link>'
-          <Link to={``} >
+          <Link to={`user-profile/${user._id}`} >
             <img src={user?.image} className='w-20 rounded-lg' alt='pic' />
           </Link>
 
