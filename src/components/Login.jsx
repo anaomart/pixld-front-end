@@ -11,7 +11,7 @@ export default function Login() {
     const shareVideo = 'https://s3.eu-north-1.amazonaws.com/pixld.agency/share.mp4'
     const navigate = useNavigate()
     const { user, setUser } = useContext(UserContext)
-    const [error , setError] = useState(false)
+    const [error , setError] = useState(true)
     const URL = 'https://13.53.234.187'
     const onSuccessLogin = async (response) => {
         const JWT = response.credential
@@ -23,7 +23,6 @@ export default function Login() {
     }
 
     async function sendJWTToServer(JWT) {
-        try{
             const response = await fetch(URL + '/user/login', {
                 method: 'POST',
                 headers: {
@@ -32,10 +31,8 @@ export default function Login() {
                 },
                 body: JSON.stringify({ JWT })
             })
-        }catch(e){
-            setError(true);
-        }
         
+        setError(false);
     }
 
     return (
