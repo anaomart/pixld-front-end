@@ -60,9 +60,10 @@ export default function UserProfile() {
                 <button
                 className='bg-red-500 m-4 p-2 rounded-full text-white'
                   onClick={()=>
-                    {localStorage.removeItem('user');
-                    window.location.reload();
+                    {
                     navigate('/');
+                    localStorage.removeItem('user');
+                    window.location.reload();
                   }
                   }
                 >
@@ -99,7 +100,7 @@ export default function UserProfile() {
                         Saved
                       </button>
                     </div>
-                    <div className='px-2  min-w-[1200px]'>{
+                    <div className='px-2  md:min-w-[1200px]'>{
                         activeBtn === 'saved' ? (
                           <MasonryLayout pins={saved}/>
                           

@@ -46,7 +46,7 @@ export default function Home() {
         <div className='p-2 w-full flex flex-row justify-between items-center shadow-md'>
           <HiMenu fontSize={40} className='cursor-pointer' onClick={() => setToggleSidebar(true)} />
           <Link to='/'>
-            <img src={logo} className='ml-24 w-24' alt='logo' />
+            <img src={logo} className='ml-24 w-24 -translate-x-14' alt='logo' />
           </Link>'
           <Link to={``} >
             <img src={user?.image} className='w-20 rounded-lg' alt='pic' />

@@ -5,13 +5,14 @@ import { GoogleLogin } from '@react-oauth/google';
 import { useState } from 'react';
 import { UserContext } from '../context/UserContext';
 import Modal from './Model';
+import { userRequest } from '../util/Request';
 
 
 export default function Login() {
     const shareVideo = 'https://s3.eu-north-1.amazonaws.com/pixld.agency/share.mp4'
     const navigate = useNavigate()
     const { user, setUser } = useContext(UserContext)
-    const [error , setError] = useState(true)
+    const [error , setError] = useState(false)
     const URL = 'https://13.53.234.187'
     const onSuccessLogin = async (response) => {
         const JWT = response.credential
@@ -21,7 +22,18 @@ export default function Login() {
         await sendJWTToServer(JWT)
         navigate('/')
     }
-
+    useEffect(()=>{
+        async function ssl() {
+            try{
+                setError(false);
+                const response = await userRequest('/userInfo')
+                console.log('response')
+            }catch(err){
+                setError(true);
+            }
+        }
+        ssl()
+    })
     async function sendJWTToServer(JWT) {
             const response = await fetch(URL + '/user/login', {
                 method: 'POST',
