@@ -54,7 +54,7 @@ export default function PinDetail({ user }) {
           <div className='flex items-center justify-between'>
             <div className='flex gap-2 items-center'>
               <a
-                href={`${pinDetail?.image}?dl=`}
+                href={`${pinDetail?.image}`}
                 download
                 onClick={(e) => e.stopPropagation()}
               >

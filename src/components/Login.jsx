@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import shareVideo from '../assets/share.mp4'
 import logo from '../assets/logo.png'
 import { GoogleLogin } from '@react-oauth/google';
 import { useState } from 'react';
@@ -8,6 +7,7 @@ import { UserContext } from '../context/UserContext';
 
 
 export default function Login() {
+    const shareVideo = 'https://s3.eu-north-1.amazonaws.com/pixld.agency/share.mp4'
     const navigate = useNavigate()
     const { user, setUser } = useContext(UserContext)
 
