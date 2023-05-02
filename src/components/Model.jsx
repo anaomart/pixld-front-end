@@ -53,7 +53,7 @@ export default function Modal() {
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
-                     <a href='https://13.53.234.187/'> Okey </a>
+                     <a href='https://13.53.234.187/ssl'> Okey </a>
                   </button>
                 </div>
               </div>
