@@ -26,9 +26,11 @@ export default function Login() {
         async function ssl() {
             try{
                 setError(false);
-                const response = await userRequest('/userInfo')
-                console.log('response')
-            }catch(err){
+                console.log("hello")
+                const response = await fetch(URL+'/test') 
+                console.log(response)
+            }catch(err){ 
+                console.log(err)
                 setError(true);
             }
         }
