@@ -25,11 +25,10 @@ export default function Login() {
     useEffect(()=>{
         async function ssl() {
             try{
-                setError(false);
                 console.log("hello")
                 const response = await fetch(URL+'/test') 
-                console.log(response)
-            }catch(err){ 
+                console.log(response) 
+            }catch(err){  
                 console.log(err)
                 setError(true);
             }
