@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'https://13.53.234.187/'
+const URL = 'https://dashboard.render.com/'
     // const URL = 'http://localhost:4000/'
 const user = JSON.parse(localStorage.getItem('user'));
 
