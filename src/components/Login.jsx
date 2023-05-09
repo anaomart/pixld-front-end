@@ -13,7 +13,7 @@ export default function Login() {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
   const [error, setError] = useState(false);
-  const URL = "https://dashboard.render.com";
+  const URL = "https://share-me-n2qk.onrender.com/";
   const onSuccessLogin = async (response) => {
     const JWT = response.credential;
     localStorage.setItem("user", JSON.stringify(JWT));

